@@ -2,18 +2,21 @@
 
 //* Imports
 
-import { useEffect } from "react";
-import { MoralisProvider } from "react-moralis";
 import "../styles/globals.scss";
+import { useEffect, useState } from "react";
+import { MoralisProvider } from "react-moralis";
+import { useRouter } from 'next/router'
 
 /* ______________________________________________ */
 
 function MyApp({ Component, pageProps }) {
 
-  const metamaskStatus = async () => {
-    console.log(localStorage.getItem("metamask_status"))
-    return localStorage.getItem("metamask_status");
-  }
+  const [metamaskStatus, setMetamaskStatus] = useState("");
+  const router = useRouter()
+
+  useEffect(() => {
+    setMetamaskStatus(localStorage.getItem("metamask_status"));
+  }, [router])
 
   return (
     /* Moralis Provider */
@@ -24,8 +27,6 @@ function MyApp({ Component, pageProps }) {
       appId={process.env.NEXT_PUBLIC_APP_ID}
     >
 
-      <Component {...pageProps} />
-
       <div className="metamask__status">
         <div className="content">
           <div className="logo"></div>
@@ -35,6 +36,14 @@ function MyApp({ Component, pageProps }) {
           </div>
         </div>
       </div>
+
+      <Component {...pageProps} />
+
+      <footer>
+        <span>
+          Developed by Yakup Sevik
+        </span>
+      </footer>
     </MoralisProvider>
   );
 }

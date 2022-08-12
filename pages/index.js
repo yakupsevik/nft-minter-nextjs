@@ -19,10 +19,10 @@ export default function Home() {
   useEffect(() => {
     // Go to the /dashboard path If Metamask connected
     if (isAuthenticated) {
-      localStorage.setItem("metamask_status", true)
+      localStorage.setItem("metamask_status", "true");
       router.push("/dashboard");
     } else {
-      localStorage.setItem("metamask_status", false)
+      localStorage.setItem("metamask_status", "false");
     }
   }, [isAuthenticated]);
 
@@ -38,12 +38,6 @@ export default function Home() {
       >
         Connect Using Metamask
       </button>
-
-      <footer>
-        <span>
-          Developed by Yakup Sevik
-        </span>
-      </footer>
     </>
   );
 }

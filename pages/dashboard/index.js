@@ -28,7 +28,7 @@ function Dashboard() {
 
   // * Logout Function
   const logoutFunc = () => {
-    localStorage.setItem("metamask_status", false);
+    localStorage.setItem("metamask_status", "false");
     logout();
   }
 
@@ -36,8 +36,10 @@ function Dashboard() {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      localStorage.setItem("metamask_status", false)
+      localStorage.setItem("metamask_status", "false");
       router.push("/");
+    } else {
+      localStorage.setItem("metamask_status", "true");
     }
   }, [isAuthenticated]);
 
