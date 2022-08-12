@@ -89,7 +89,7 @@ function Dashboard() {
         });
 
       alert(
-        `NFT successfully minted. Contract address - https://testnet.bscscan.com/tx/${response.transactionHash}`
+        `NFT successfully minted. Transaction Hash: ${response.transactionHash}`
       );
     } catch (err) {
       alert("Something went wrong!");
