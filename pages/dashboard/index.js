@@ -127,7 +127,7 @@ function Dashboard() {
           <button
             type="submit"
           >
-            Mint now!
+            Mint
           </button>
           <button
             onClick={logoutFunc}
